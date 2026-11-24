@@ -73,8 +73,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         log_path = resolve_log_path(args.log_file)
         content = resolve_logfire_content(args.logfire_content)
         if remote or log_path is not None:
-            configure_telemetry(log_path=log_path, remote=remote, service_version=package_version(), content=content)
-            announce(log_path, remote=remote)
+            active = configure_telemetry(
+                log_path=log_path, remote=remote, service_version=package_version(), content=content
+            )
+            announce(log_path, remote=active, requested=remote)
+            remote = active
         anyio.run(
             partial(
                 run_shell,

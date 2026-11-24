@@ -34,6 +34,7 @@ def test_validate_query():
 
 def test_models_and_keys():
     assert search_model('google', {}) == 'google:gemini-3.8-flash'
+    assert search_model('openai', {}) == 'openai-responses:gpt-5.5'
     assert search_model('openai', {'HELLO_PAX_SEARCH_OPENAI_MODEL': ' openai:o9 '}) == 'openai:o9'
     assert missing_key('google', {'GOOGLE_API_KEY': 'x'}) is None
     assert missing_key('openai', {}) == 'OPENAI_API_KEY'

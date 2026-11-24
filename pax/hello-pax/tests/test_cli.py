@@ -43,7 +43,7 @@ def test_wiring(monkeypatch: pytest.MonkeyPatch, tmp_path: Any):
         return 'id'
 
     monkeypatch.setattr(cli, 'run_shell', fake_run)
-    monkeypatch.setattr(cli, 'configure_telemetry', lambda **kw: calls.setdefault('tel', kw))
+    monkeypatch.setattr(cli, 'configure_telemetry', lambda **kw: calls.setdefault('tel', kw) and False)
     monkeypatch.setenv('HELLO_PAX_MODEL', 'test')
     log = str(tmp_path / 'l.jsonl')
     argv = [
@@ -72,3 +72,17 @@ def test_interrupt(monkeypatch: pytest.MonkeyPatch):
 
     monkeypatch.setattr(cli, 'run_shell', boom)
     assert cli.main(['-m', 'test', '--no-logfire']) == 130
+
+
+def test_no_token_warns_and_reports_remote_off(monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]):
+    seen: dict[str, Any] = {}
+
+    async def fake_run(model: Any, **kw: Any) -> str:
+        seen.update(kw)
+        return 'id'
+
+    monkeypatch.setattr(cli, 'run_shell', fake_run)
+    monkeypatch.setattr(cli, 'configure_telemetry', lambda **kw: False)  # requested, but no token
+    assert cli.main(['-m', 'test']) == 0
+    assert seen['logfire_remote'] is False
+    assert 'nothing is sent' in capsys.readouterr().err

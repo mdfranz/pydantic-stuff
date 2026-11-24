@@ -58,7 +58,7 @@ def test_real_spans(tmp_path: Path):
     import logfire
 
     target = tmp_path / 'logs' / 'x.jsonl'
-    configure_telemetry(log_path=target, remote=False, service_version='t')
+    assert configure_telemetry(log_path=target, remote=False, service_version='t') is False
     agent = build_shell_agent(TestModel(call_tools=['session_info']))
     agent.run_sync('hi', deps=DEPS)
     logfire.force_flush()
@@ -71,3 +71,15 @@ def test_real_spans(tmp_path: Path):
 @pytest.fixture(autouse=True)
 def _no_remote(monkeypatch: pytest.MonkeyPatch):  # pyright: ignore[reportUnusedFunction]
     monkeypatch.delenv('LOGFIRE_TOKEN', raising=False)
+
+
+def test_remote_without_token_is_inactive(tmp_path: Path):
+    assert configure_telemetry(log_path=None, remote=True, service_version='t') is False
+
+
+def test_remote_with_token_is_active(monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setenv('LOGFIRE_TOKEN', 'pylf_v1_us_' + 'x' * 40)
+    monkeypatch.setattr('logfire.DEFAULT_LOGFIRE_INSTANCE.config.token', 'x', raising=False)
+    monkeypatch.setattr('logfire.configure', lambda **kw: None)
+    monkeypatch.setattr('logfire.instrument_pydantic_ai', lambda: None)
+    assert configure_telemetry(log_path=None, remote=True, service_version='t') is True

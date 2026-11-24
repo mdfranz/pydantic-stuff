@@ -48,7 +48,7 @@ flowchart LR
 6. **CLAI2 settings & request limit isolation**:
    - `CHAT_SETTINGS = Settings(model=None, code_mode=False, speculative_code_mode=False, session_namer=False)` prevents saved global preferences from overriding the agent's model, disables Code Mode, and disables CLAI2's session namer (which hard-codes a 250-token cap that fails on reasoning models and re-sends conversation content).
    - Pass explicit `usage_limits=UsageLimits(request_limit=request_limit)` (default `200`) to `chat()`, because `pydantic_clai2.chat()` does not apply CLAI2's CLI `request_limit` setting and would otherwise fall back to `pydantic-ai`'s default of `50`.
-7. **Supply-chain cool-off**: Keep `partex`'s `[tool.uv] exclude-newer = "2 days"` with explicit per-package exemptions only for the `pydantic-ai` / `pydantic-clai2` / `pydantic-monty` stack. (For example, `logfire` `6.0.1` is <24h old at plan time, so `uv sync` locks battle-tested `logfire` `5.6.0` alongside `pydantic-clai2` `0.71.0` and `pydantic-ai-slim` `2.71.0`, matching `partex/uv.lock`.)
+7. **Supply-chain cool-off**: Keep `partex`'s `[tool.uv] exclude-newer = "2 days"` with explicit per-package exemptions only for the `pydantic-ai` / `pydantic-clai2` / `pydantic-monty` stack. (At build time `uv sync` locked `logfire` `6.0.0` alongside `pydantic-clai2` `0.71.0` and `pydantic-ai-slim` `2.71.0`.)
 8. **Private permissions & zero secret leakage**: Any local state directories are created `0700`; JSONL trace files are created lazily on first span with mode `0600`. Credentials stay strictly in environment variables read by `pydantic-ai` / `logfire` and are never logged or stored.
 
 ---
@@ -262,6 +262,17 @@ Follows `partex`'s `scope_plugin.py` + `targets_plugin.py` pattern (with `# pyri
     )
     ```
   - Returns `session_id`.
+
+#### Stock plugins (`STOCK_PLUGINS`)
+Declared explicitly in `agent_adapter/__init__.py` and passed ahead of our own plugins in `builtin_plugins`; the isolated `SettingsStore` means nothing else loads.
+
+| id | adds |
+| --- | --- |
+| `refinement` | `/refine [focus]`: operator command that re-submits a review prompt on the last answer |
+| `compaction` | `/compact`, a context gauge, and summarising of older messages near 85% of the window (falls back to truncation) |
+| `ask_user` | a model-facing tool for inline multiple-choice questions |
+
+Deliberately excluded: `coder`, `sandbox`, `workspaces`, `repo_context` (filesystem/repo access), `hooks`, `mcp` (commands and external servers), `observability`/`logfire*` (duplicates our Logfire setup), `notifications` (needs `notify-send`), `web`, and the hosted-service plugins. `tests/test_plugins.py` enforces the denylist.
 
 ### 5.9 `src/hello_pax/cli.py`
 Single-command `argparse` interface (`prog='hello-pax'`):

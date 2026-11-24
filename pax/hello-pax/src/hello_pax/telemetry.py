@@ -118,7 +118,8 @@ def keep_content(match: Any) -> Any:
     return None
 
 
-def configure_telemetry(*, log_path: Path | None, remote: bool, service_version: str, content: bool = False) -> None:
+def configure_telemetry(*, log_path: Path | None, remote: bool, service_version: str, content: bool = False) -> bool:
+    """Configure Logfire; returns whether spans will actually be sent to Logfire (needs a token or credentials)."""
     import logfire
 
     processors = [] if log_path is None else [SimpleSpanProcessor(JsonlSpanExporter(log_path))]
@@ -131,13 +132,21 @@ def configure_telemetry(*, log_path: Path | None, remote: bool, service_version:
         scrubbing=logfire.ScrubbingOptions(callback=keep_content) if content else None,
     )
     logfire.instrument_pydantic_ai()
+    return remote and logfire.DEFAULT_LOGFIRE_INSTANCE.config.token is not None
 
 
-def announce(log_path: Path | None, *, remote: bool) -> None:
+NO_TOKEN_HINT = (
+    'Logfire is not configured, so nothing is sent: run `uvx logfire auth` or set LOGFIRE_TOKEN (or --no-logfire)'
+)
+
+
+def announce(log_path: Path | None, *, remote: bool, requested: bool = False) -> None:
     parts: list[str] = []
     if remote:
-        parts.append('logfire (if token present)')
+        parts.append('logfire')
     if log_path is not None:
         parts.append(f'jsonl {log_path}')
+    if requested and not remote:
+        print(f'hello-pax: {NO_TOKEN_HINT}', file=sys.stderr)
     if parts:
         print(f'hello-pax: telemetry -> {", ".join(parts)}', file=sys.stderr)

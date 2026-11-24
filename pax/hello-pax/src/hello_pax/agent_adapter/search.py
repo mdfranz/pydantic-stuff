@@ -14,7 +14,7 @@ from urllib.parse import urlsplit
 
 import logfire
 from pydantic_ai import Agent, WebSearchTool
-from pydantic_ai.capabilities import WebSearch
+from pydantic_ai.capabilities import Caching, WebSearch
 from pydantic_ai.exceptions import AgentRunError
 from pydantic_ai.messages import ModelMessage, ModelResponse, NativeToolCallPart, NativeToolReturnPart
 from pydantic_ai.models.anthropic import AnthropicModelSettings
@@ -29,7 +29,7 @@ PROVIDERS: tuple[Provider, ...] = ('google', 'anthropic', 'openai')
 DEFAULT_MODELS: Mapping[Provider, str] = {
     'google': 'google:gemini-3.8-flash',
     'anthropic': 'anthropic:claude-haiku-5-5',
-    'openai': 'openai:gpt-5.5',
+    'openai': 'openai-responses:gpt-5.5',
 }
 MODEL_ENVS: Mapping[Provider, str] = {
     'google': 'HELLO_PAX_SEARCH_GOOGLE_MODEL',
@@ -179,7 +179,10 @@ def build_search_agent(model: str, *, provider: Provider) -> Agent[None, str]:
         output_type=str,
         instructions=SEARCH_INSTRUCTIONS,
         tools=(),
-        capabilities=[WebSearch(local=None, max_uses=SEARCH_ANTHROPIC_MAX_USES if provider == 'anthropic' else None)],
+        capabilities=[
+            Caching(messages=False),  # one-off queries share instructions and tools, not history
+            WebSearch(local=None, max_uses=SEARCH_ANTHROPIC_MAX_USES if provider == 'anthropic' else None),
+        ],
         model_settings=_model_settings(provider),
         defer_model_check=True,
     )

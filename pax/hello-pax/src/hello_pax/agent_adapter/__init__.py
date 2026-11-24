@@ -1,11 +1,10 @@
 import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import cast
 from uuid import uuid4
 
 from pydantic_ai.models import Model
-from pydantic_ai.settings import ModelSettings, ThinkingLevel
+from pydantic_ai.settings import ThinkingLevel
 from pydantic_ai.usage import UsageLimits
 from pydantic_clai2 import chat  # pyright: ignore[reportMissingTypeStubs]
 from pydantic_clai2.config import PluginSettings, Settings  # pyright: ignore[reportMissingTypeStubs]
@@ -21,9 +20,12 @@ from .status_plugin import STATUS_PLUGIN_FACTORY, STATUS_PLUGIN_ID, StatusContro
 CHAT_SETTINGS = Settings(model=None, code_mode=False, speculative_code_mode=False, session_namer=False)
 DEFAULT_REQUEST_LIMIT = 200
 
-
-def shell_model_settings(thinking: ThinkingLevel | None) -> ModelSettings | None:
-    return cast('ModelSettings', {'thinking': thinking}) if thinking is not None else None
+# Stock CLAI2 plugins we opt into, explicitly. None touch the filesystem, a shell, or hosted-service credentials.
+STOCK_PLUGINS: tuple[PluginSettings, ...] = (
+    PluginSettings(id='refinement', factory='pydantic_clai2.builtin_plugins.refinement'),
+    PluginSettings(id='compaction', factory='pydantic_clai2.builtin_plugins.compaction', settings={}),
+    PluginSettings(id='ask_user', factory='pydantic_clai2.builtin_plugins.ask_user_menu'),
+)
 
 
 async def run_shell(
@@ -57,7 +59,7 @@ async def run_shell(
         request_limit=request_limit,
         thinking=None if thinking is None else str(thinking),
     )
-    agent = build_shell_agent(model, instructions=instructions, model_settings=shell_model_settings(thinking))
+    agent = build_shell_agent(model, instructions=instructions, thinking=thinking)
     if logfire_remote or log_path is not None:
         import logfire
 
@@ -70,6 +72,7 @@ async def run_shell(
             load_plugins=True,
             store=SettingsStore(config_db),
             builtin_plugins=(
+                *STOCK_PLUGINS,
                 PluginSettings(id=STATUS_PLUGIN_ID, factory=STATUS_PLUGIN_FACTORY),
                 PluginSettings(id=SEARCH_PLUGIN_ID, factory=SEARCH_PLUGIN_FACTORY),
             ),

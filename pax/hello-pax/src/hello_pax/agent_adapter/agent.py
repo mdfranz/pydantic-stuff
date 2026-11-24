@@ -3,8 +3,9 @@ from datetime import datetime
 from pathlib import Path
 
 from pydantic_ai import Agent, RunContext
+from pydantic_ai.capabilities import AbstractCapability, Caching, Thinking
 from pydantic_ai.models import Model
-from pydantic_ai.settings import ModelSettings
+from pydantic_ai.settings import ModelSettings, ThinkingLevel
 
 DEFAULT_INSTRUCTIONS = (
     'You are a concise, helpful assistant running in the hello-pax terminal shell. '
@@ -35,8 +36,15 @@ def session_info(ctx: RunContext[ShellDeps]) -> dict[str, str | bool | None]:
 
 
 def build_shell_agent(
-    model: Model | str, *, instructions: str | None = None, model_settings: ModelSettings | None = None
+    model: Model | str,
+    *,
+    instructions: str | None = None,
+    thinking: ThinkingLevel | None = None,
+    model_settings: ModelSettings | None = None,
 ) -> Agent[ShellDeps, str]:
+    capabilities: list[AbstractCapability[ShellDeps]] = [Caching()]
+    if thinking is not None:
+        capabilities.append(Thinking(effort=thinking))
     return Agent(
         model,
         name='hello_pax_shell_agent',
@@ -44,6 +52,7 @@ def build_shell_agent(
         output_type=str,
         instructions=instructions or DEFAULT_INSTRUCTIONS,
         tools=[session_info],
+        capabilities=capabilities,
         model_settings=model_settings,
         defer_model_check=True,
     )
