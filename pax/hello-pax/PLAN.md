@@ -274,6 +274,8 @@ Declared explicitly in `agent_adapter/__init__.py` and passed ahead of our own p
 
 Deliberately excluded: `coder`, `sandbox`, `workspaces`, `repo_context` (filesystem/repo access), `hooks`, `mcp` (commands and external servers), `observability`/`logfire*` (duplicates our Logfire setup), `notifications` (needs `notify-send`), `web`, and the hosted-service plugins. `tests/test_plugins.py` enforces the denylist.
 
+Core CLAI2 shell features that are not plugins stay enabled and are accepted by design: operator-run `!COMMAND` (its output is saved for the next prompt), `/monty` (Python in the Monty sandbox), `/fork`, and `/tasks`. The model itself still has no filesystem, shell, or network tools.
+
 ### 5.9 `src/hello_pax/cli.py`
 Single-command `argparse` interface (`prog='hello-pax'`):
 
