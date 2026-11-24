@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hello-pax"
+version = "0.1.0"
+description = "Minimal isolated pydantic-clai2 shell with Logfire telemetry"
+requires-python = ">=3.14"
+dependencies = [
+    "anyio>=4",
+    "logfire>=5.6",
+    "opentelemetry-sdk>=1.30",
+    "pydantic-ai-slim[google]>=2.68",
+    "pydantic-clai2>=0.68",
+    "rich>=14",
+]
+
+[project.scripts]
+hello-pax = "hello_pax.__main__:main"
+
+[tool.uv]
+exclude-newer = "2 days"
+exclude-newer-package = { pydantic-ai-slim = false, pydantic-graph = false, pydantic-ai-harness = false, pydantic-clai2 = false, pydantic-monty = false, pydantic-monty-client = false, pydantic-monty-runtime = false }
+
+[dependency-groups]
+dev = ["anyio", "pyright", "pytest", "ruff"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hello_pax"]
+
+[tool.ruff]
+include = ["*.py", "*.pyi", "pyproject.toml"]
+line-length = 120
+target-version = "py314"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.pyright]
+pythonVersion = "3.14"
+typeCheckingMode = "strict"
+include = ["src"]
+
+[tool.pytest.ini_options]
+anyio_mode = "auto"
+testpaths = ["tests"]
