@@ -29,7 +29,7 @@ async def test_tool_registered_and_override():
         result = await agent.run('hi', deps=DEPS)
     assert result.output == 'success (no tool calls)'
     assert model.last_model_request_parameters is not None
-    assert [t.name for t in model.last_model_request_parameters.function_tools] == ['session_info']
+    assert [t.name for t in model.last_model_request_parameters.function_tools] == ['session_info', 'read_pyai_docs']
 
 
 async def test_session_info_runs():

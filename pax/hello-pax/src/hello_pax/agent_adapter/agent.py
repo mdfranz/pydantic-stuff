@@ -6,11 +6,13 @@ from pydantic_ai import Agent, RunContext
 from pydantic_ai.capabilities import AbstractCapability, Caching, Thinking
 from pydantic_ai.models import Model
 from pydantic_ai.settings import ModelSettings, ThinkingLevel
+from pydantic_ai_harness.pydantic_ai_docs import PydanticAIDocs
 
 DEFAULT_INSTRUCTIONS = (
     'You are a concise, helpful assistant running in the hello-pax terminal shell. '
     'You have no filesystem, shell, or network tools. '
-    'Use the session_info tool when asked about this session (id, model, start time, telemetry).'
+    'Use the session_info tool when asked about this session (id, model, start time, telemetry). '
+    'Use read_pyai_docs for questions about building with Pydantic AI.'
 )
 
 
@@ -42,7 +44,7 @@ def build_shell_agent(
     thinking: ThinkingLevel | None = None,
     model_settings: ModelSettings | None = None,
 ) -> Agent[ShellDeps, str]:
-    capabilities: list[AbstractCapability[ShellDeps]] = [Caching()]
+    capabilities: list[AbstractCapability[ShellDeps]] = [Caching(), PydanticAIDocs()]
     if thinking is not None:
         capabilities.append(Thinking(effort=thinking))
     return Agent(
