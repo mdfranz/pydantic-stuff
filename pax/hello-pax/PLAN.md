@@ -271,8 +271,9 @@ Declared explicitly in `agent_adapter/__init__.py` and passed ahead of our own p
 | `refinement` | `/refine [focus]`: operator command that re-submits a review prompt on the last answer |
 | `compaction` | `/compact`, a context gauge, and summarising of older messages near 85% of the window (falls back to truncation) |
 | `ask_user` | a model-facing tool for inline multiple-choice questions |
+| `logfire_mcp` | read-only Logfire query tools over MCP (`/logfire login`, or `LOGFIRE_API_KEY`); needs a read key, not `LOGFIRE_TOKEN` |
 
-Deliberately excluded: `coder`, `sandbox`, `workspaces`, `repo_context` (filesystem/repo access), `hooks`, `mcp` (commands and external servers), `observability`/`logfire*` (duplicates our Logfire setup), `notifications` (needs `notify-send`), `web`, and the hosted-service plugins. `tests/test_plugins.py` enforces the denylist.
+Deliberately excluded: `coder`, `sandbox`, `workspaces`, `repo_context` (filesystem/repo access), `hooks`, `mcp` (commands and external servers), `observability` (duplicates our Logfire setup), `notifications` (needs `notify-send`), `web`, and the hosted-service plugins. `tests/test_plugins.py` enforces the denylist.
 
 Core CLAI2 shell features that are not plugins stay enabled and are accepted by design: operator-run `!COMMAND` (its output is saved for the next prompt), `/monty` (Python in the Monty sandbox), `/fork`, and `/tasks`. The model itself still has no filesystem, shell, or network tools.
 

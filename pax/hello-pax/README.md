@@ -44,6 +44,7 @@ State lives under `$HELLO_PAX_STATE_DIR`, else `$XDG_STATE_HOME/hello-pax`, else
 | `/search <google\|anthropic\|openai> <query>` | native web search, shown to you and not added to the conversation |
 | `/refine [focus]` | have the model review and revise its last answer |
 | `/compact` | summarise older messages; the status row shows a context gauge |
+| `/logfire login` / `/logfire status` | sign in so the agent can query your Logfire data (read-only MCP); or set `LOGFIRE_API_KEY` |
 
 The model has one tool, `session_info`, plus CLAI2's inline `ask_user` questions. It has no filesystem, shell, or
 network tools. CLAI2's own `!COMMAND` and `/monty` are operator-side shell features and are left enabled.

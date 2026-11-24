@@ -17,7 +17,10 @@ from .agent import ShellDeps, build_shell_agent
 from .search_plugin import SEARCH_PLUGIN_FACTORY, SEARCH_PLUGIN_ID, SearchControl, current_search
 from .status_plugin import STATUS_PLUGIN_FACTORY, STATUS_PLUGIN_ID, StatusControl, current_status
 
-CHAT_SETTINGS = Settings(model=None, code_mode=False, speculative_code_mode=False, session_namer=False)
+DEFAULT_THEME = 'green_screen'
+CHAT_SETTINGS = Settings(
+    model=None, code_mode=False, speculative_code_mode=False, session_namer=False, theme=DEFAULT_THEME
+)
 DEFAULT_REQUEST_LIMIT = 200
 
 # Stock CLAI2 plugins we opt into, explicitly. None touch the filesystem, a shell, or hosted-service credentials.
@@ -25,6 +28,8 @@ STOCK_PLUGINS: tuple[PluginSettings, ...] = (
     PluginSettings(id='refinement', factory='pydantic_clai2.builtin_plugins.refinement'),
     PluginSettings(id='compaction', factory='pydantic_clai2.builtin_plugins.compaction', settings={}),
     PluginSettings(id='ask_user', factory='pydantic_clai2.builtin_plugins.ask_user_menu'),
+    # Read-only Logfire MCP tools; connects with LOGFIRE_API_KEY (or /keys), else browser sign-in via /logfire login.
+    PluginSettings(id='logfire_mcp', factory='pydantic_clai2.builtin_plugins.logfire_mcp'),
 )
 
 
