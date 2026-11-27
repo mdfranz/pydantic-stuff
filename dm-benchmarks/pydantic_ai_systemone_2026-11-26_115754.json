@@ -1,0 +1,158 @@
+{
+  "timestamp": "2026-11-26 11:57:54 -0500",
+  "harness": "pydantic-ai + logfire",
+  "models": [
+    {
+      "model": "laya:latest",
+      "warmup_ms": 251.86,
+      "resident": {
+        "size_gb": 0.91,
+        "size_vram_gb": 0.91,
+        "context_length": 512
+      },
+      "median_ms": 40.27,
+      "mean_ms": 71.08,
+      "min_ms": 29.6,
+      "max_ms": 157.75,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 157.75,
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=0.964)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9635441391576122,
+                  "shipping": 0.013090541561880649,
+                  "technical": 0.012261399692726186,
+                  "account": 0.011103919587780849
+                },
+                "confidence": 0.858269099600332
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 40.93,
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=0.544)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.5444895508195472
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 39.61,
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.971)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.97148485715521
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 39.61,
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.719, score=1.6969540643538599)",
+              "raw": {
+                "type": "score",
+                "score": 1.6969540643538599,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.022205229234675293,
+                  "1": 0.25863547717678964,
+                  "2": 0.7191592935885351
+                },
+                "confidence": 0.38887108180431595
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 29.6,
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.483)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.4825701772937043
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 118.98,
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.541)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.5409378481414205,
+                  "billing": 0.24000069901905371,
+                  "technical": 0.21906145283952577
+                },
+                "confidence": 0.08292348468355759
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.613)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.6126265979826758
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.841, score=1.8048815802227043)",
+              "raw": {
+                "type": "score",
+                "score": 1.8048815802227043,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.036482048672770044,
+                  "1": 0.12215432243175554,
+                  "2": 0.8413636288954743
+                },
+                "confidence": 0.5239946166780032
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

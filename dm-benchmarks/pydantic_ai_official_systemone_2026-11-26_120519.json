@@ -1,0 +1,552 @@
+{
+  "timestamp": "2026-11-26 12:05:19 -0500",
+  "harness": "pydantic-ai built-in SystemOneModel + logfire",
+  "models": [
+    {
+      "model": "laya:latest",
+      "median_ms": 49.05,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 60.03,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 51.58,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 46.52,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 45.8,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 31.32,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 118.29,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 2
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": true
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "d1:2b-mxfp8",
+      "median_ms": 135.9,
+      "correct": 7,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 148.51,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 113.22,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 123.29,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 152.03,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 88.48,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 247.71,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 1
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": false
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "strands-decider:2b-mxfp8",
+      "median_ms": 173.02,
+      "correct": 6,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 172.36,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 178.44,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 145.87,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 173.67,
+          "got": {
+            "urgency": 1
+          },
+          "checks": {
+            "urgency": false
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 145.07,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 549.73,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 1
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": false
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "d3:4b-mxfp8",
+      "median_ms": 431.91,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 504.68,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 432.39,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 421.87,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 431.43,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 349.06,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 1511.69,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 2
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": true
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "d3:9b-nvfp4",
+      "median_ms": 756.9,
+      "correct": 7,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 892.3,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 752.74,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 753.16,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 760.63,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 619.25,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 2687.39,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 1
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": false
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "kev:9b-nvfp4",
+      "median_ms": 464.75,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 466.37,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 463.13,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 333.22,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 473.29,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 331.32,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 1106.39,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 2
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": true
+          },
+          "error": null
+        }
+      ]
+    },
+    {
+      "model": "nimble-v3:9b-nvfp4",
+      "median_ms": 986.68,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 1341.58,
+          "got": {
+            "team": "billing"
+          },
+          "checks": {
+            "team": true
+          },
+          "error": null
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 1080.52,
+          "got": {
+            "eligible": true
+          },
+          "checks": {
+            "eligible": true
+          },
+          "error": null
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 608.75,
+          "got": {
+            "is_injection": true
+          },
+          "checks": {
+            "is_injection": true
+          },
+          "error": null
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 892.84,
+          "got": {
+            "urgency": 2
+          },
+          "checks": {
+            "urgency": true
+          },
+          "error": null
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 475.08,
+          "got": {
+            "asking_refund": false
+          },
+          "checks": {
+            "asking_refund": true
+          },
+          "error": null
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 1965.9,
+          "got": {
+            "department": "returns",
+            "churn_risk": true,
+            "severity": 2
+          },
+          "checks": {
+            "department": true,
+            "churn_risk": true,
+            "severity": true
+          },
+          "error": null
+        }
+      ]
+    }
+  ]
+}

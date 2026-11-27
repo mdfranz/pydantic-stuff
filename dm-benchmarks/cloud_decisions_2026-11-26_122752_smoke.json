@@ -1,0 +1,640 @@
+{
+ "timestamp": "2026-11-26 12:27:52 -0500",
+ "suites": [
+  "smoke",
+  "multimodal",
+  "fallback"
+ ],
+ "limit": null,
+ "concurrency": 5,
+ "smoke": [
+  {
+   "model": "google-decisions:gemini-decision-1",
+   "median_ms": 139.8,
+   "correct": 0,
+   "total": 8,
+   "input_tokens": 0,
+   "output_tokens": 0,
+   "est_cost_usd": 0.0,
+   "cases": [
+    {
+     "id": "ticket_route_choice",
+     "ms": 139.7,
+     "got": {},
+     "expected": {
+      "team": "billing"
+     },
+     "checks": {
+      "team": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    },
+    {
+     "id": "policy_eligible_noul",
+     "ms": 142.3,
+     "got": {},
+     "expected": {
+      "eligible": true
+     },
+     "checks": {
+      "eligible": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    },
+    {
+     "id": "prompt_injection_noul",
+     "ms": 138.9,
+     "got": {},
+     "expected": {
+      "is_injection": true
+     },
+     "checks": {
+      "is_injection": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    },
+    {
+     "id": "outage_urgency_score",
+     "ms": 135.3,
+     "got": {},
+     "expected": {
+      "urgency": 2
+     },
+     "checks": {
+      "urgency": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    },
+    {
+     "id": "subtle_refund_noul",
+     "ms": 170.0,
+     "got": {},
+     "expected": {
+      "asking_refund": false
+     },
+     "checks": {
+      "asking_refund": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    },
+    {
+     "id": "bundled_3q_triage",
+     "ms": 139.9,
+     "got": {},
+     "expected": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "checks": {
+      "department": false,
+      "churn_risk": false,
+      "severity": false
+     },
+     "input_tokens": 0,
+     "output_tokens": 0,
+     "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecisionHttp are blocked.', 'status': 'PERMIS"
+    }
+   ]
+  },
+  {
+   "model": "openai-decisions:gpt-6-luna",
+   "median_ms": 246.3,
+   "correct": 8,
+   "total": 8,
+   "input_tokens": 1461,
+   "output_tokens": 0,
+   "est_cost_usd": 0.000146,
+   "cases": [
+    {
+     "id": "ticket_route_choice",
+     "ms": 254.2,
+     "got": {
+      "team": "billing"
+     },
+     "expected": {
+      "team": "billing"
+     },
+     "checks": {
+      "team": true
+     },
+     "input_tokens": 185,
+     "output_tokens": 0,
+     "error": null
+    },
+    {
+     "id": "policy_eligible_noul",
+     "ms": 238.4,
+     "got": {
+      "eligible": true
+     },
+     "expected": {
+      "eligible": true
+     },
+     "checks": {
+      "eligible": true
+     },
+     "input_tokens": 214,
+     "output_tokens": 0,
+     "error": null
+    },
+    {
+     "id": "prompt_injection_noul",
+     "ms": 192.4,
+     "got": {
+      "is_injection": true
+     },
+     "expected": {
+      "is_injection": true
+     },
+     "checks": {
+      "is_injection": true
+     },
+     "input_tokens": 201,
+     "output_tokens": 0,
+     "error": null
+    },
+    {
+     "id": "outage_urgency_score",
+     "ms": 465.4,
+     "got": {
+      "urgency": 2
+     },
+     "expected": {
+      "urgency": 2
+     },
+     "checks": {
+      "urgency": true
+     },
+     "input_tokens": 179,
+     "output_tokens": 0,
+     "error": null
+    },
+    {
+     "id": "subtle_refund_noul",
+     "ms": 277.5,
+     "got": {
+      "asking_refund": false
+     },
+     "expected": {
+      "asking_refund": false
+     },
+     "checks": {
+      "asking_refund": true
+     },
+     "input_tokens": 182,
+     "output_tokens": 0,
+     "error": null
+    },
+    {
+     "id": "bundled_3q_triage",
+     "ms": 222.8,
+     "got": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "expected": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "checks": {
+      "department": true,
+      "churn_risk": true,
+      "severity": true
+     },
+     "input_tokens": 500,
+     "output_tokens": 0,
+     "error": null
+    }
+   ]
+  },
+  {
+   "model": "openai:gpt-6-luna",
+   "median_ms": 961.0,
+   "correct": 8,
+   "total": 8,
+   "input_tokens": 723,
+   "output_tokens": 96,
+   "est_cost_usd": 0.00012,
+   "cases": [
+    {
+     "id": "ticket_route_choice",
+     "ms": 1419.5,
+     "got": {
+      "team": "billing"
+     },
+     "expected": {
+      "team": "billing"
+     },
+     "checks": {
+      "team": true
+     },
+     "input_tokens": 125,
+     "output_tokens": 14,
+     "error": null
+    },
+    {
+     "id": "policy_eligible_noul",
+     "ms": 617.8,
+     "got": {
+      "eligible": true
+     },
+     "expected": {
+      "eligible": true
+     },
+     "checks": {
+      "eligible": true
+     },
+     "input_tokens": 103,
+     "output_tokens": 13,
+     "error": null
+    },
+    {
+     "id": "prompt_injection_noul",
+     "ms": 1436.1,
+     "got": {
+      "is_injection": true
+     },
+     "expected": {
+      "is_injection": true
+     },
+     "checks": {
+      "is_injection": true
+     },
+     "input_tokens": 89,
+     "output_tokens": 14,
+     "error": null
+    },
+    {
+     "id": "outage_urgency_score",
+     "ms": 896.4,
+     "got": {
+      "urgency": 2
+     },
+     "expected": {
+      "urgency": 2
+     },
+     "checks": {
+      "urgency": true
+     },
+     "input_tokens": 125,
+     "output_tokens": 15,
+     "error": null
+    },
+    {
+     "id": "subtle_refund_noul",
+     "ms": 933.7,
+     "got": {
+      "asking_refund": false
+     },
+     "expected": {
+      "asking_refund": false
+     },
+     "checks": {
+      "asking_refund": true
+     },
+     "input_tokens": 71,
+     "output_tokens": 15,
+     "error": null
+    },
+    {
+     "id": "bundled_3q_triage",
+     "ms": 988.2,
+     "got": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "expected": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "checks": {
+      "department": true,
+      "churn_risk": true,
+      "severity": true
+     },
+     "input_tokens": 210,
+     "output_tokens": 25,
+     "error": null
+    }
+   ]
+  },
+  {
+   "model": "anthropic:claude-haiku-5-5",
+   "median_ms": 2003.4,
+   "correct": 8,
+   "total": 8,
+   "input_tokens": 2098,
+   "output_tokens": 74,
+   "est_cost_usd": 0.000247,
+   "cases": [
+    {
+     "id": "ticket_route_choice",
+     "ms": 2009.2,
+     "got": {
+      "team": "billing"
+     },
+     "expected": {
+      "team": "billing"
+     },
+     "checks": {
+      "team": true
+     },
+     "input_tokens": 359,
+     "output_tokens": 10,
+     "error": null
+    },
+    {
+     "id": "policy_eligible_noul",
+     "ms": 1997.7,
+     "got": {
+      "eligible": true
+     },
+     "expected": {
+      "eligible": true
+     },
+     "checks": {
+      "eligible": true
+     },
+     "input_tokens": 309,
+     "output_tokens": 9,
+     "error": null
+    },
+    {
+     "id": "prompt_injection_noul",
+     "ms": 2716.4,
+     "got": {
+      "is_injection": true
+     },
+     "expected": {
+      "is_injection": true
+     },
+     "checks": {
+      "is_injection": true
+     },
+     "input_tokens": 303,
+     "output_tokens": 10,
+     "error": null
+    },
+    {
+     "id": "outage_urgency_score",
+     "ms": 2673.6,
+     "got": {
+      "urgency": 2
+     },
+     "expected": {
+      "urgency": 2
+     },
+     "checks": {
+      "urgency": true
+     },
+     "input_tokens": 348,
+     "output_tokens": 9,
+     "error": null
+    },
+    {
+     "id": "subtle_refund_noul",
+     "ms": 1223.3,
+     "got": {
+      "asking_refund": false
+     },
+     "expected": {
+      "asking_refund": false
+     },
+     "checks": {
+      "asking_refund": true
+     },
+     "input_tokens": 262,
+     "output_tokens": 11,
+     "error": null
+    },
+    {
+     "id": "bundled_3q_triage",
+     "ms": 1078.6,
+     "got": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "expected": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "checks": {
+      "department": true,
+      "churn_risk": true,
+      "severity": true
+     },
+     "input_tokens": 517,
+     "output_tokens": 25,
+     "error": null
+    }
+   ]
+  },
+  {
+   "model": "anthropic:claude-sonnet-5-5",
+   "median_ms": 1072.0,
+   "correct": 8,
+   "total": 8,
+   "input_tokens": 2098,
+   "output_tokens": 72,
+   "est_cost_usd": 0.004916,
+   "cases": [
+    {
+     "id": "ticket_route_choice",
+     "ms": 992.4,
+     "got": {
+      "team": "billing"
+     },
+     "expected": {
+      "team": "billing"
+     },
+     "checks": {
+      "team": true
+     },
+     "input_tokens": 359,
+     "output_tokens": 10,
+     "error": null
+    },
+    {
+     "id": "policy_eligible_noul",
+     "ms": 984.9,
+     "got": {
+      "eligible": true
+     },
+     "expected": {
+      "eligible": true
+     },
+     "checks": {
+      "eligible": true
+     },
+     "input_tokens": 309,
+     "output_tokens": 9,
+     "error": null
+    },
+    {
+     "id": "prompt_injection_noul",
+     "ms": 1020.3,
+     "got": {
+      "is_injection": true
+     },
+     "expected": {
+      "is_injection": true
+     },
+     "checks": {
+      "is_injection": true
+     },
+     "input_tokens": 303,
+     "output_tokens": 10,
+     "error": null
+    },
+    {
+     "id": "outage_urgency_score",
+     "ms": 1189.1,
+     "got": {
+      "urgency": 2
+     },
+     "expected": {
+      "urgency": 2
+     },
+     "checks": {
+      "urgency": true
+     },
+     "input_tokens": 348,
+     "output_tokens": 9,
+     "error": null
+    },
+    {
+     "id": "subtle_refund_noul",
+     "ms": 1347.3,
+     "got": {
+      "asking_refund": false
+     },
+     "expected": {
+      "asking_refund": false
+     },
+     "checks": {
+      "asking_refund": true
+     },
+     "input_tokens": 262,
+     "output_tokens": 11,
+     "error": null
+    },
+    {
+     "id": "bundled_3q_triage",
+     "ms": 1123.7,
+     "got": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "expected": {
+      "department": "returns",
+      "churn_risk": true,
+      "severity": 2
+     },
+     "checks": {
+      "department": true,
+      "churn_risk": true,
+      "severity": true
+     },
+     "input_tokens": 517,
+     "output_tokens": 23,
+     "error": null
+    }
+   ]
+  }
+ ],
+ "models": [],
+ "multimodal": [
+  {
+   "model": "google-decisions:gemini-decision-1",
+   "red": {
+    "ok": false,
+    "got": null,
+    "ms": 219.9,
+    "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecis"
+   },
+   "blue": {
+    "ok": false,
+    "got": null,
+    "ms": 58.0,
+    "error": "ModelAuthenticationError: status_code: 403, model_name: gemini-decision-1, body: {'error': {'code': 403, 'message': 'Requests to this API generativelanguage.googleapis.com method genai.gemini.v1beta.DecisionService.CreateDecis"
+   },
+   "pdf_client_check": "UserError: A user prompt contains an unsupported file: this model accepts text and images only."
+  },
+  {
+   "model": "openai-decisions:gpt-6-luna",
+   "red": {
+    "ok": true,
+    "got": true,
+    "ms": 233.6,
+    "error": null
+   },
+   "blue": {
+    "ok": true,
+    "got": false,
+    "ms": 208.6,
+    "error": null
+   }
+  },
+  {
+   "model": "anthropic:claude-haiku-5-5",
+   "red": {
+    "ok": true,
+    "got": true,
+    "ms": 2505.5,
+    "error": null
+   },
+   "blue": {
+    "ok": true,
+    "got": false,
+    "ms": 850.6,
+    "error": null
+   }
+  }
+ ],
+ "fallback": [
+  {
+   "decision_model": "google-decisions:gemini-decision-1",
+   "fallback_model": "anthropic:claude-haiku-5-5",
+   "fast_stays_on_decision": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   },
+   "complex_escalates_unfillable": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   },
+   "unsure_threshold_escalates": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   }
+  },
+  {
+   "decision_model": "openai-decisions:gpt-6-luna",
+   "fallback_model": "anthropic:claude-haiku-5-5",
+   "fast_stays_on_decision": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   },
+   "complex_escalates_unfillable": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   },
+   "unsure_threshold_escalates": {
+    "error": "UserError: A decision model weighs each route by what it is for, and 'FastTriage' says nothing about itself. Give the output type a docstring that says what filling it does."
+   }
+  }
+ ]
+}

@@ -1,0 +1,1061 @@
+{
+  "timestamp": "2026-11-26 11:10:38 -0500",
+  "models": [
+    {
+      "model": "laya:latest",
+      "warmup_ms": 1438.14,
+      "resident": {
+        "size_gb": 0.89,
+        "size_vram_gb": 0.89,
+        "context_length": 512
+      },
+      "median_ms": 32.27,
+      "mean_ms": 70.57,
+      "min_ms": 21.59,
+      "max_ms": 227.38,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 78.41,
+          "usage": {
+            "input_tokens": 85,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=0.964)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9635441391576122,
+                  "shipping": 0.013090541561880649,
+                  "technical": 0.012261399692726186,
+                  "account": 0.011103919587780849
+                },
+                "confidence": 0.858269099600332
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 32.07,
+          "usage": {
+            "input_tokens": 81,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=0.544)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.5444895508195472
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 31.48,
+          "usage": {
+            "input_tokens": 74,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.971)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.97148485715521
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 32.47,
+          "usage": {
+            "input_tokens": 76,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.719, score=1.6969540643538599)",
+              "raw": {
+                "type": "score",
+                "score": 1.6969540643538599,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.022205229234675293,
+                  "1": 0.25863547717678964,
+                  "2": 0.7191592935885351
+                },
+                "confidence": 0.38887108180431595
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 21.59,
+          "usage": {
+            "input_tokens": 57,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.483)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.4825701772937043
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 227.38,
+          "usage": {
+            "input_tokens": 289,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.541)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.5409378481414205,
+                  "billing": 0.24000069901905371,
+                  "technical": 0.21906145283952577
+                },
+                "confidence": 0.08292348468355759
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.613)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.6126265979826758
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.841, score=1.8048815802227043)",
+              "raw": {
+                "type": "score",
+                "score": 1.8048815802227043,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.036482048672770044,
+                  "1": 0.12215432243175554,
+                  "2": 0.8413636288954743
+                },
+                "confidence": 0.5239946166780032
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "model": "d1:2b-mxfp8",
+      "warmup_ms": 1753.19,
+      "resident": {
+        "size_gb": 2.46,
+        "size_vram_gb": 2.46,
+        "context_length": 32768
+      },
+      "median_ms": 123.68,
+      "mean_ms": 162.82,
+      "min_ms": 103.28,
+      "max_ms": 322.02,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 322.02,
+          "usage": {
+            "input_tokens": 95,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=0.999)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9993733142107175,
+                  "shipping": 0.0002871655662911149,
+                  "technical": 0.00016777687227787313,
+                  "account": 0.00017174335071363055
+                },
+                "confidence": 0.9957326174776553
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 138.84,
+          "usage": {
+            "input_tokens": 98,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=0.999)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9988062758459151
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 108.51,
+          "usage": {
+            "input_tokens": 87,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.999)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9992688601092746
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 105.16,
+          "usage": {
+            "input_tokens": 92,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.995, score=1.9924776595323739)",
+              "raw": {
+                "type": "score",
+                "score": 1.9924776595323739,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.0026946062057618685,
+                  "1": 0.002133128056102256,
+                  "2": 0.9951722657381358
+                },
+                "confidence": 0.9691630980397818
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 103.28,
+          "usage": {
+            "input_tokens": 70,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.001)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.001250762510075764
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 199.09,
+          "usage": {
+            "input_tokens": 187,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.967)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.9665558444542629,
+                  "billing": 0.030433153716925725,
+                  "technical": 0.00301100182881134
+                },
+                "confidence": 0.8574217417103859
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.994)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9939030115785715
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.622, score=1.5529791365721783)",
+              "raw": {
+                "type": "score",
+                "score": 1.5529791365721783,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.06918433266511448,
+                  "1": 0.3086521980975929,
+                  "2": 0.6221634692372927
+                },
+                "confidence": 0.23278459709829946
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "model": "strands-decider:2b-mxfp8",
+      "warmup_ms": 1654.23,
+      "resident": {
+        "size_gb": 1.99,
+        "size_vram_gb": 1.99,
+        "context_length": 4096
+      },
+      "median_ms": 129.64,
+      "mean_ms": 178.61,
+      "min_ms": 98.76,
+      "max_ms": 392.05,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 193.98,
+          "usage": {
+            "input_tokens": 122,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=0.994)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9943764639736733,
+                  "shipping": 0.0026488843406261846,
+                  "technical": 0.0016879560741395719,
+                  "account": 0.0012866956115609302
+                },
+                "confidence": 0.9706661854787141
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 127.58,
+          "usage": {
+            "input_tokens": 130,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=0.908)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.908231315211816
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 130.17,
+          "usage": {
+            "input_tokens": 110,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.958)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9583148323324369
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 129.11,
+          "usage": {
+            "input_tokens": 125,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.537, score=1.3609827614157317)",
+              "raw": {
+                "type": "score",
+                "score": 1.3609827614157317,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.1759146194175654,
+                  "1": 0.2871879997491374,
+                  "2": 0.5368973808332972
+                },
+                "confidence": 0.09165391377944998
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 98.76,
+          "usage": {
+            "input_tokens": 97,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.050)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.049895096558699496
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 392.05,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.969)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.9685134454610111,
+                  "billing": 0.02323561639512554,
+                  "technical": 0.0082509381438634
+                },
+                "confidence": 0.8561978187637137
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.832)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.8316764900722537
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.380, score=1.1038679012693797)",
+              "raw": {
+                "type": "score",
+                "score": 1.1038679012693797,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.2761562998666016,
+                  "1": 0.3438194989974171,
+                  "2": 0.38002420113598134
+                },
+                "confidence": 0.007738428185669055
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "model": "d3:4b-mxfp8",
+      "warmup_ms": 2960.48,
+      "resident": {
+        "size_gb": 5.54,
+        "size_vram_gb": 5.54,
+        "context_length": 262144
+      },
+      "median_ms": 421.77,
+      "mean_ms": 560.55,
+      "min_ms": 331.39,
+      "max_ms": 1331.95,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 449.45,
+          "usage": {
+            "input_tokens": 156,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=1.000)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.999936208858635,
+                  "shipping": 2.5883649496560287e-05,
+                  "technical": 1.585397873271567e-05,
+                  "account": 2.20535131357732e-05
+                },
+                "confidence": 0.9994598204808259
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 426.79,
+          "usage": {
+            "input_tokens": 147,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=1.000)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9999709735823321
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 406.94,
+          "usage": {
+            "input_tokens": 133,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.999)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9992738191158156
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 416.75,
+          "usage": {
+            "input_tokens": 143,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=1.000, score=1.9995759949245846)",
+              "raw": {
+                "type": "score",
+                "score": 1.9995759949245846,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 3.682226485865504e-05,
+                  "1": 0.00035036054569841915,
+                  "2": 0.9996128171894431
+                },
+                "confidence": 0.9967680119427472
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 331.39,
+          "usage": {
+            "input_tokens": 120,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.042)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.042379051773391255
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 1331.95,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.995)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.9951980592051063,
+                  "billing": 0.004719323080302125,
+                  "technical": 8.261771459160839e-05
+                },
+                "confidence": 0.9719243769576825
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.992)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9917104716951485
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.666, score=1.6196254470171425)",
+              "raw": {
+                "type": "score",
+                "score": 1.6196254470171425,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.04627984198417235,
+                  "1": 0.2878148690145127,
+                  "2": 0.665905289001315
+                },
+                "confidence": 0.2978068363269565
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "model": "d3:9b-nvfp4",
+      "warmup_ms": 4050.14,
+      "resident": {
+        "size_gb": 7.38,
+        "size_vram_gb": 7.38,
+        "context_length": 262144
+      },
+      "median_ms": 720.68,
+      "mean_ms": 964.26,
+      "min_ms": 584.37,
+      "max_ms": 2309.51,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 722.26,
+          "usage": {
+            "input_tokens": 156,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=1.000)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.9998808174423433,
+                  "shipping": 6.17403682697263e-05,
+                  "technical": 2.7305123937302634e-05,
+                  "account": 3.013706544971514e-05
+                },
+                "confidence": 0.9990490821398387
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 733.03,
+          "usage": {
+            "input_tokens": 147,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=1.000)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9999450092972241
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 717.3,
+          "usage": {
+            "input_tokens": 133,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=1.000)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.999854130123179
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 719.1,
+          "usage": {
+            "input_tokens": 143,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.998, score=1.9976590328189532)",
+              "raw": {
+                "type": "score",
+                "score": 1.9976590328189532,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.0002155651428144785,
+                  "1": 0.0019098368954178495,
+                  "2": 0.9978745979617677
+                },
+                "confidence": 0.9855272114206641
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 584.37,
+          "usage": {
+            "input_tokens": 120,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.040)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.04008875290816172
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 2309.51,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.989)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.9886681751731022,
+                  "billing": 0.010892050192996959,
+                  "technical": 0.0004397746339009433
+                },
+                "confidence": 0.9418397703526413
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.997)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9972566810060064
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.511, score=1.4160336532000513)",
+              "raw": {
+                "type": "score",
+                "score": 1.4160336532000513,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.09540449155832628,
+                  "1": 0.3931573636832962,
+                  "2": 0.5114381447583776
+                },
+                "confidence": 0.1497188147487991
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "model": "kev:9b-nvfp4",
+      "warmup_ms": 3063.17,
+      "resident": {
+        "size_gb": 6.45,
+        "size_vram_gb": 6.45,
+        "context_length": 73728
+      },
+      "median_ms": 433.75,
+      "mean_ms": 471.55,
+      "min_ms": 300.6,
+      "max_ms": 740.03,
+      "correct": 8,
+      "total": 8,
+      "cases": [
+        {
+          "id": "ticket_route_choice",
+          "latency_ms": 489.44,
+          "usage": {
+            "input_tokens": 83,
+            "output_tokens": 0
+          },
+          "questions": {
+            "team": {
+              "correct": true,
+              "detail": "billing (p=0.986)",
+              "raw": {
+                "type": "choice",
+                "choice": "billing",
+                "probabilities": {
+                  "billing": 0.986,
+                  "shipping": 0.0077,
+                  "technical": 0.0027,
+                  "account": 0.0035
+                },
+                "confidence": 0.9814
+              }
+            }
+          }
+        },
+        {
+          "id": "policy_eligible_noul",
+          "latency_ms": 434.32,
+          "usage": {
+            "input_tokens": 76,
+            "output_tokens": 0
+          },
+          "questions": {
+            "eligible": {
+              "correct": true,
+              "detail": "True (P=0.992)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9919
+              }
+            }
+          }
+        },
+        {
+          "id": "prompt_injection_noul",
+          "latency_ms": 433.18,
+          "usage": {
+            "input_tokens": 66,
+            "output_tokens": 0
+          },
+          "questions": {
+            "is_injection": {
+              "correct": true,
+              "detail": "True (P=0.933)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9326
+              }
+            }
+          }
+        },
+        {
+          "id": "outage_urgency_score",
+          "latency_ms": 431.73,
+          "usage": {
+            "input_tokens": 71,
+            "output_tokens": 0
+          },
+          "questions": {
+            "urgency": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.975, score=1.9689)",
+              "raw": {
+                "type": "score",
+                "score": 1.9689,
+                "legend": {
+                  "0": "Routine: minor annoyance with no business impact",
+                  "1": "Soon: degraded experience with a workaround available",
+                  "2": "Immediate: critical customer-facing outage blocking revenue"
+                },
+                "probabilities": {
+                  "0": 0.0059,
+                  "1": 0.0194,
+                  "2": 0.9748
+                },
+                "confidence": 0.9533
+              }
+            }
+          }
+        },
+        {
+          "id": "subtle_refund_noul",
+          "latency_ms": 300.6,
+          "usage": {
+            "input_tokens": 53,
+            "output_tokens": 0
+          },
+          "questions": {
+            "asking_refund": {
+              "correct": true,
+              "detail": "False (P=0.033)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.033
+              }
+            }
+          }
+        },
+        {
+          "id": "bundled_3q_triage",
+          "latency_ms": 740.03,
+          "usage": {
+            "input_tokens": 242,
+            "output_tokens": 0
+          },
+          "questions": {
+            "department": {
+              "correct": true,
+              "detail": "returns (p=0.944)",
+              "raw": {
+                "type": "choice",
+                "choice": "returns",
+                "probabilities": {
+                  "returns": 0.9443,
+                  "billing": 0.0379,
+                  "technical": 0.0178
+                },
+                "confidence": 0.9165
+              }
+            },
+            "churn_risk": {
+              "correct": true,
+              "detail": "True (P=0.963)",
+              "raw": {
+                "type": "noul",
+                "noul": 0.9634
+              }
+            },
+            "severity": {
+              "correct": true,
+              "detail": "idx=2 (2, p=0.743, score=1.685)",
+              "raw": {
+                "type": "score",
+                "score": 1.685,
+                "legend": {
+                  "0": "Low",
+                  "1": "Moderate",
+                  "2": "High"
+                },
+                "probabilities": {
+                  "0": 0.0583,
+                  "1": 0.1984,
+                  "2": 0.7433
+                },
+                "confidence": 0.5275
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
